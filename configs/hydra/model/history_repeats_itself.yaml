@@ -1,0 +1,26 @@
+defaults:
+  - _self_
+  - common
+
+type: history_repeats_itself
+kernel_size: 10
+d_model: 256
+in_features: 66
+input_n: ${obs_frames_num}
+output_n: ${pred_frames_num}
+num_stage: 12
+dct_n: 20
+itera: 1
+un_mode: 'default'
+init_mode: 'default'
+modality: 'Human36' # Can be either Human36 or AMASS
+
+loss:
+  type: his_rep_itself
+  input_n: ${obs_frames_num}
+  output_n: ${pred_frames_num}
+  itera: 1
+  kernel_size: 10
+  device: ${device}
+  un_mode: 
+  modality: 'Human36' # Can be either Human36 or AMASS

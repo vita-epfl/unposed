@@ -1,0 +1,11 @@
+defaults:
+  - shared
+  - _self_
+
+annotated_data_path: ???
+dataset: ???
+data_type: ???
+output_name:
+
+# This is used just for 3DPW
+load_60Hz: True

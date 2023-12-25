@@ -1,0 +1,8 @@
+obs_frames_num: 10
+pred_frames_num: 25
+model_pose_format: xyz
+metric_pose_format:
+keypoint_dim: 3
+device: cuda
+load_path:
+save_dir:

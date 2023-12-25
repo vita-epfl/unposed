@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - shared
+  - data: main
+  - model:
+  - metrics
+
+dataset: ???
+rounds_num: 1
+device: cuda
+eval_epu: False
+n_clusters: 17
+epu_model_path: ???
+dataset_name: ???

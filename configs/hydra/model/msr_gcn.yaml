@@ -1,0 +1,18 @@
+defaults:
+  - _self_
+  - common
+
+type: msr_gcn
+
+p_dropout: 0.1
+leaky_c: 0.2
+final_out_noden: 22
+input_feature: 35
+global_max: 6793.261339887178
+global_min: -6245.483729757661
+dct_used: 35
+input_n: 10
+output_n: 25
+
+loss:
+  type: msr_gcn

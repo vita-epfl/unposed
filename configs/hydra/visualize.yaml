@@ -1,0 +1,13 @@
+defaults:
+  - data: main
+  - model: ???
+  - shared
+  - _self_
+
+dataset: ???
+dataset_type: ???
+keypoint_dim: 3
+showing: future, predicted
+pred_frames_num:
+index:
+images_dir:

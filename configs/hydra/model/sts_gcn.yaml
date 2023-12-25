@@ -1,0 +1,16 @@
+defaults:
+  - _self_
+  - common
+
+type: sts_gcn
+st_gcnn_dropout: 0.1
+n_txcnn_layers: 4
+txc_kernel_size: [3, 3]
+txc_dropout: 0
+n_major_joints: 18 # 18 for AMASS and 3DPW, 22 for Human3.6m
+
+pre_post_process: AMASS # human3.6m, AMASS, 3DPW
+
+loss:
+  type: mpjpe
+  nJ: 18 # 18 for AMASS and 3DPW, 32 for Human3.6m

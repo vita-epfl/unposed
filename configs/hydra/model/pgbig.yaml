@@ -1,0 +1,31 @@
+defaults:
+  - _self_
+  - common
+
+type: pgbig
+
+kernel_size: 10 # must be 10. Also obs_frames_num must be 10 to match the kernel size
+d_model: 16
+dct_n: 35 # usually obs_frames_num + pred_frames_num
+in_features: 54 # How many features are in a frame? 3 * n_joints. 66 for Human3.6M, 54 for 3DPW and AMASS
+num_stage: 12
+drop_out: 0.3
+
+# can be human3.6m , AMASS, 3DPW, none
+pre_post_process: AMASS
+
+device: ${device}
+
+loss:
+  device: ${device}
+  pre_post_process: AMASS # Should be excatly like the one in the model
+  type: pgbig_loss
+  inner_type: ORIGINAL # PUAL # if you want to use the PUAL loss, set this to PUAL. otherwise set it to something else and not None. In that case it will use the original loss function.
+  tasks: STJ # use S if you want each stage be a seperate task
+  nT: 35 # must be obs_frames_num + pred_frames_num
+  nJ: 18 # 18 for AMASS/3DPW, 22 for Human3.6M
+  time_prior: sig5
+  action_list: ["walking", "eating", "smoking", "discussion", "directions", "greeting", "phoning", "posing", "purchases", "sitting", "sittingdown", "takingphoto", "waiting", "walkingdog", "walkingtogether"]
+  clipMinS: -1
+  clipMaxS:
+  init_mean: 3 # 3.5 for Human3.6M, 3 for AMASS/3DPW

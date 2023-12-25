@@ -1,0 +1,6 @@
+type: reduce_lr_on_plateau
+mode: min
+factor: 0.8
+patience: 3
+threshold: 0.1
+verbose: true

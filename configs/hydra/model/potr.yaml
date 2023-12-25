@@ -1,0 +1,60 @@
+defaults:
+  - _self_
+  - common
+
+type: potr
+
+num_encoder_layers: 4
+num_decoder_layers: 4
+query_selection: &query_selection false
+use_query_embedding: false
+num_layers: 6
+model_dim: 128
+num_heads: 2
+dim_ffn: 16
+dropout: 0.5
+init_fn_name: xavier
+pre_normalization: true
+pose_embedding_type: gcn_enc
+pos_enc_beta: 500
+pos_enc_alpha: 10
+use_class_token: false
+predict_activity: &predict_activity true
+non_autoregressive: true
+
+include_last_obs: &include_last_obs false
+pad_decoder_inputs: &pad_decoder_inputs true
+
+
+# data related
+pose_format: &model_pose_format ${model_pose_format}
+metric_pose_format: ${metric_pose_format}
+future_frames_num: &pred_frames_num ${pred_frames_num} # convert to pred frames num which is in common
+
+n_major_joints: &n_major_joints 21
+n_joints: &n_joints 21
+n_h36m_joints: 32
+pose_dim: ${keypoint_dim}
+num_activities: &num_activities 15
+
+device: &device ${device}
+consider_uncertainty: &consider_uncertainty false
+
+loss:
+  type: potr
+  activity_weight: 1.0
+  uncertainty_weight: 1.0
+  loss_fn: l1
+  query_selection: *query_selection
+  predict_activity: *predict_activity
+  pose_format: *model_pose_format
+  future_frames_num: *pred_frames_num
+  obs_frames_num: ${obs_frames_num} #*obs_frames_num
+  include_last_obs: *include_last_obs
+  pose_dim: ${keypoint_dim} #*keypoint_dim
+  n_major_joints: *n_joints
+  pad_decoder_inputs: *pad_decoder_inputs
+  device: *device
+  consider_uncertainty: *consider_uncertainty
+  num_activities: *num_activities
+  #metric_pose_format: metric_pose_format

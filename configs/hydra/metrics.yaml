@@ -1,0 +1,13 @@
+pose_metrics: 
+  - ADE
+  - FDE
+  - F1 #new:
+  - F3
+  - F7
+  - F9
+  - F13
+  - F17
+  - F21
+  # - MSE
+  # - local_ade
+  # - local_fde

@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - common
+
+type: pv_lstm
+hidden_size: 200
+hardtanh_limit: 10
+n_layers: 1
+dropout_enc: 0
+dropout_pose_dec: 0
+dropout_mask_dec: 0
+
+# loss:
+#   type: mse_vel
+#   mask_weight: 0
+
+loss:
+  device: ${device}
+  type: pua_loss
+  tasks: TJ
+  nT: 25
+  nJ: 18 # 32, 22
+  time_prior: sig5
+  action_list: ["walking", "eating", "smoking", "discussion", "directions", "greeting", "phoning", "posing", "purchases", "sitting", "sittingdown", "takingphoto", "waiting", "walkingdog", "walkingtogether"]
+  clipMinS: -1
+  clipMaxS:
+  init_mean: 3.5

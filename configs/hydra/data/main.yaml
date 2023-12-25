@@ -1,0 +1,18 @@
+keypoint_dim: ${keypoint_dim}
+
+model_pose_format: ${model_pose_format}
+metric_pose_format: ${metric_pose_format}
+
+pose_formats: []
+
+is_h36_testing: false
+is_testing: false
+batch_size: 16
+shuffle: true
+pin_memory: false
+num_workers: 4
+seq_rate: 2 # number of frames to skip between each sequence
+frame_rate: 2 # number of frames to skip between each frame in a sequence
+len_observed: ${obs_frames_num}
+len_future: ${pred_frames_num}
+random_reverse_prob: 0.5

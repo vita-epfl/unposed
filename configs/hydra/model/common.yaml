@@ -1,0 +1,7 @@
+keypoint_dim: ${keypoint_dim}
+pred_frames_num: ${pred_frames_num}
+obs_frames_num: ${obs_frames_num}
+keypoints_num: 
+mean_pose:
+std_pose:
+device: ${device}

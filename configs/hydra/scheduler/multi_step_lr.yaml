@@ -1,0 +1,3 @@
+type: multi_step_lr
+milestones: [1, 2, 3, 5, 7, 9]
+gamma: 0.4

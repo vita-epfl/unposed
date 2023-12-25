@@ -1,0 +1,6 @@
+type: sgd
+lr: 0.01
+momentum: 0.9
+dampening: 0
+weight_decay: 1e-05
+nesterov: false

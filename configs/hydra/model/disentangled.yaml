@@ -1,0 +1,16 @@
+defaults:
+  - _self_
+  - common
+
+type: disentangled
+
+hidden_size: 200
+hardtanh_limit: 10
+n_layers: 1
+dropout_enc: 0
+dropout_pose_dec: 0
+dropout_mask_dec: 0
+
+loss:
+  type: mpjpe
+  nJ: 32 # 18 for AMASS and 3DPW, 32 for Human3.6m

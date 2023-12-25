@@ -1,0 +1,5 @@
+type: sam
+base_optimizer: 
+        type: adam
+        lr: 0.001
+        weight_decay: 1e-05

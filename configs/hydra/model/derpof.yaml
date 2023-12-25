@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - common
+
+type: derpof
+embedding_dim: 8
+hidden_dim: 64
+latent_dim: 32
+dropout: 0.2
+
+
+loss:
+  type: derpof
+  local_loss_weight: 0.1
