@@ -1,0 +1,38 @@
+venv
+venv/
+
+*__pycache__*
+*.pyc
+exps/
+
+**/jupyter-log*
+preprocessed_data/
+raw_data/
+visualization/example.py
+outputs/
+results
+tmp/
+jobs
+**/slurm*
+**/*.out
+**/*.sh
+**/.ipynb_checkpoints/
+*.pt
+
+# Images
+*.jpg
+*.png
+viz.ipynb
+
+# Mlflow
+mlruns/
+
+# Visualization and Notebooks
+sample_viz/
+sample_viz_unc/
+*.gif
+notebooks/
+
+.vscode/
+
+preprocessed_data

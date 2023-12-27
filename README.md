@@ -232,3 +232,15 @@ See [here](ARGS_README.md#generating-outputs) for more details about prediction 
 
 # Work in Progress
 This repository is being updated so please stay tuned!   
+
+
+For more details please refer to our paper: [[arXiv](https://arxiv.org/abs/2304.06707)] 
+```
+@misc{saadatnejad2023unposed,
+      title={Toward Reliable Human Pose Forecasting with Uncertainty}, 
+      author={Saeed Saadatnejad and Mehrshad Mirmohammadi and Matin Daghyani and Parham Saremi and Yashar Zoroofchi Benisi and Amirhossein Alimohammadi and Zahra Tehraninasab and Taylor Mordan and Alexandre Alahi},
+      year={2023},
+      eprint={2304.06707},
+      archivePrefix={arXiv},
+}
+```
