@@ -17,7 +17,7 @@ from path_definition import HYDRA_PATH
 logger = logging.getLogger(__name__)
 
 
-@hydra.main(config_path=HYDRA_PATH, config_name="evaluate")
+@hydra.main(config_path=HYDRA_PATH, config_name="evaluate", version_base="1.1")
 def evaluate(cfg: DictConfig):
     if cfg.load_path is None and cfg.model is None:
         msg = 'either specify a load_path or config a model.'
