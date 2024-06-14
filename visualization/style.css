@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    background: black;
+    font-family: Arial;
+    color: white;
+/*    overflow: hidden;*/
+}
+
+canvas {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+canvas#realTimeCanvas {
+    border: none;
+    z-index: -1;
+    left: 0;
+    position: fixed;
+    top: 0;
+}
+
+div.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.container span {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+div.container canvas {
+    height: 50vh;
+    width: calc(50vh * 4/3);
+}
+
+img {
+    height: 50vh;
+}
+
+video.bg {
+    width: 100vw;
+    height: 100vh;
+    object-fit: fill;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(50px);
+    opacity: 0.25;
+    transform: scaleX(-1)
+}
+
+div.header {
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+}
+
+a, u {
+    color: gray;
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}

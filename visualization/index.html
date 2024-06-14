@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pose Prediction</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚶🏻‍♂️</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/onnxruntime-web/1.18.0/ort.all.js"></script>
+</head>
+<body>
+    <div class="header">
+        <span>pose estimation: <a href="https://openpifpaf.github.io/intro.html" target="_blank">OpenPifPaf</a> • pose prediction: <a href="https://github.com/vita-epfl/DePOSit/" target="_blank">DePOSit</a></span>
+        <span>fps: <span class="fps">n/a</span> • prediction latency: <span class="latency">n/a</span> • backend: wasm • model: <span class='model-name'>n/a</span></span>
+    </div>
+    <div class="container">
+        <span class="collecting-frames">Initializing</span>
+        <canvas id="poseCanvas" class="hidden"></canvas>
+        <canvas id="predictionAnalysis" class="hidden"></canvas>
+        <div class="btns hidden">
+            <button onclick="analysisFrozen ^= 1">freeze/unfreeze (now)</button>
+            <button onclick="setTimeout(() => analysisFrozen ^= 1, 2_000)">freeze/unfreeze (2s delay)</button>
+        </div>
+    </div>
+    <video class="bg"></video>
+    <canvas id="realTimeCanvas"></canvas>
+
+    <script src="prediction.js"></script>
+    <script src="canvas-utils.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
