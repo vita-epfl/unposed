@@ -21,7 +21,7 @@ from factory.epistemic_uncertainty_evaluator import UncertaintyEvaluator
 logger = logging.getLogger(__name__) 
 
 
-@hydra.main(config_path=HYDRA_PATH, config_name="train")
+@hydra.main(config_path=HYDRA_PATH, config_name="train", version_base="1.1")
 def train(cfg: DictConfig):
     if cfg.load_path is None and cfg.model is None:
         msg = 'either specify a load_path or config a model.'
