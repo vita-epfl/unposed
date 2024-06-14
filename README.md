@@ -1,5 +1,6 @@
-# UnPOSed  
-UnPOSed is an open-source toolbox for pose prediction/forecasting a sequence of human pose given an observed sequence, implemented in PyTorch.
+# Toward Reliable Human Pose Forecasting with Uncertainty  
+UnPOSed is an open-source toolbox for prediction/forecasting a sequence of human pose given an observed pose sequence, implemented in PyTorch. For more details, please refer to our [paper](https://arxiv.org/abs/2304.06707), published in <i> IEEE Robotics and Automation Letters, 2024</i>.
+
 
 <p float="left">
   Input pose<br/><img src="https://user-images.githubusercontent.com/33596552/138102745-f6b5c7a0-ee14-40ef-907f-b3ebb98ae08f.gif" alt="observation" width="500">
@@ -107,7 +108,7 @@ Please download the datasets and put them in a their specific folder. We will re
 # Models
 
 We've tested the following models:
-- [ST-Transformer](https://arxiv.org/abs/2304.06707)
+- [ST-Trans](https://arxiv.org/abs/2304.06707)
 - [PG-Big](https://arxiv.org/abs/2203.16051)
 - [History Repeats Itself](https://arxiv.org/abs/2007.11755)
 - [STS-GCN](https://arxiv.org/abs/2110.04573)
@@ -234,13 +235,13 @@ See [here](ARGS_README.md#generating-outputs) for more details about prediction 
 This repository is being updated so please stay tuned!   
 
 
-For more details please refer to our paper: [[arXiv](https://arxiv.org/abs/2304.06707)] 
+
 ```
-@misc{saadatnejad2023unposed,
-      title={Toward Reliable Human Pose Forecasting with Uncertainty}, 
-      author={Saeed Saadatnejad and Mehrshad Mirmohammadi and Matin Daghyani and Parham Saremi and Yashar Zoroofchi Benisi and Amirhossein Alimohammadi and Zahra Tehraninasab and Taylor Mordan and Alexandre Alahi},
-      year={2023},
-      eprint={2304.06707},
-      archivePrefix={arXiv},
+@article{saadatnejad2024unposed,
+  title={Toward reliable human pose forecasting with uncertainty},
+  author={Saadatnejad, Saeed and Mirmohammadi, Mehrshad and Daghyani, Matin and Saremi, Parham and Benisi, Yashar Zoroofchi and Alimohammadi, Amirhossein and Tehraninasab, Zahra and Mordan, Taylor and Alahi, Alexandre},
+  journal={IEEE Robotics and Automation Letters},
+  year={2024},
+  publisher={IEEE}
 }
 ```
