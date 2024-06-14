@@ -116,7 +116,7 @@ class DePOSit(nn.Module):
         else:
             t = torch.randint(0, self.num_steps, [B]).to(self.device)
         current_alpha = self.alpha_torch[t].to(self.device)  # (B,1,1)
-        noise = torch.randn_like(observed_data).to(self.device)
+        noise = torch.randn_like(observed_data.cpu()).to(self.device)
         noisy_data = (current_alpha ** 0.5) * observed_data + (1.0 - current_alpha) ** 0.5 * noise
 
         total_input = self.set_input_to_diffmodel(noisy_data, observed_data, cond_mask)
@@ -151,11 +151,11 @@ class DePOSit(nn.Module):
                 noisy_obs = observed_data
                 noisy_cond_history = []
                 for t in range(self.num_steps):
-                    noise = torch.randn_like(noisy_obs)
+                    noise = torch.randn_like(noisy_obs.cpu())
                     noisy_obs = (self.alpha_hat[t] ** 0.5) * noisy_obs + self.beta[t] ** 0.5 * noise
                     noisy_cond_history.append(noisy_obs * cond_mask)
 
-            current_sample = torch.randn_like(observed_data)
+            current_sample = torch.randn_like(observed_data.cpu())
 
             for t in range(self.num_steps - 1, -1, -1):
                 if self.is_unconditional:
@@ -172,7 +172,7 @@ class DePOSit(nn.Module):
                 current_sample = coeff1 * (current_sample - coeff2 * predicted)
 
                 if t > 0:
-                    noise = torch.randn_like(current_sample)
+                    noise = torch.randn_like(current_sample.cpu())
                     sigma = (
                                     (1.0 - self.alpha[t - 1]) / (1.0 - self.alpha[t]) * self.beta[t]
                             ) ** 0.5
