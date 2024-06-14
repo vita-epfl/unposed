@@ -1,4 +1,5 @@
 keypoint_dim: ${keypoint_dim}
+model: ${model}
 
 model_pose_format: ${model_pose_format}
 metric_pose_format: ${metric_pose_format}

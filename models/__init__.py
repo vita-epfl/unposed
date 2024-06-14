@@ -8,6 +8,7 @@ from .msr_gcn.msrgcn import MSRGCN
 from .potr.potr import POTR
 from .st_trans.ST_Trans import ST_Trans
 from .pgbig.pgbig import PGBIG
+from .deposit.deposit import DePOSit
 
 MODELS = {'zero_vel': ZeroVel,
           'pv_lstm': PVLSTM,
@@ -18,5 +19,6 @@ MODELS = {'zero_vel': ZeroVel,
           'sts_gcn': STsGCN,
           'msr_gcn': MSRGCN,
           'st_trans': ST_Trans,
-          'pgbig': PGBIG ,
+          'pgbig': PGBIG,
+          'deposit': DePOSit,
           }

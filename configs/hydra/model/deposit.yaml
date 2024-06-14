@@ -1,0 +1,38 @@
+defaults:
+  - _self_
+  - common
+
+type: deposit
+
+device: ${device}
+target_dim: 96
+
+n_major_joints: 22 # 18 for AMASS and 3DPW and 22 for human3.6m
+
+# can be human3.6m , AMASS, 3DPW, none
+pre_post_process: human3.6m
+
+config:
+  train:
+    epochs: 100
+    batch_size: 32
+    batch_size_test: 32
+    lr: 1.0e-3
+  diffusion:
+    layers: 4
+    channels: 64
+    nheads: 8
+    diffusion_embedding_dim: 128
+    beta_start: 0.0001
+    beta_end: 0.5
+    num_steps: 50
+    schedule: 'cosine'
+    type: 'ddpm' # or ddim
+    side_dim: -1
+  model:
+    is_unconditional: 0
+    timeemb: 128
+    featureemb: 16
+
+loss:
+  type: deposit_loss

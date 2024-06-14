@@ -8,6 +8,7 @@ from .msr_gcn_loss import MSRGCNLoss
 from .potr_loss import POTRLoss
 from .pua_loss import PUALoss
 from .pgbig_loss import PGBIG_PUALoss
+from .deposit_loss import DePOSitLoss
 
 LOSSES = {'mse_vel': MSEVel,
           'mse_pose': MSEPose,
@@ -18,5 +19,6 @@ LOSSES = {'mse_vel': MSEVel,
           'msr_gcn':MSRGCNLoss,
           'potr': POTRLoss,
           'pua_loss': PUALoss,
-          'pgbig_loss': PGBIG_PUALoss
+          'pgbig_loss': PGBIG_PUALoss,
+          'deposit_loss': DePOSitLoss,
           }
