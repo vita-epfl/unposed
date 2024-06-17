@@ -229,12 +229,16 @@ python -m api.generate_final_output model=st_trans \
 ```  
 See [here](ARGS_README.md#generating-outputs) for more details about prediction arguments.
 
+# Visualization
 
+Launch an interactive web app to visualize model outputs by running:
+```bash
+python -m visualization.server
+```
+For more details, visit [visualization/README.md](https://github.com/vita-epfl/unposed/blob/main/visualization/README.md).
 
 # Work in Progress
 This repository is being updated so please stay tuned!   
-
-
 
 ```
 @article{saadatnejad2024unposed,
