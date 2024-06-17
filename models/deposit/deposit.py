@@ -231,7 +231,11 @@ class DePOSit(nn.Module):
             'pred_pose': pred_pose
         }
 
+
     def evaluate(self, batch, n_samples):
+    # comment above line and uncomment below lines for onnx export
+    # def forward(self, pose, mask, timepoints, n_samples=1):
+        # batch = {"pose": pose, "mask": mask, "timepoints": timepoints}
         (
             observed_data,
             observed_tp,
@@ -266,6 +270,9 @@ class DePOSit(nn.Module):
         )
 
     def map_data(self, batch):
+        if 'observed_pose' not in batch: # already mapped
+            return batch
+
         in_n = batch['observed_pose'].shape[1]
         out_n = batch['future_pose'].shape[1]
 
