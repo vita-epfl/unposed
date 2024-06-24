@@ -7,7 +7,7 @@ const poseCtx = poseCanvas.getContext('2d');
 const predCtx = predCanvas.getContext('2d');
 
 predCanvas.style.width = '90vw';
-predCanvas.style.height = '6vw';
+predCanvas.style.height = '9vw';
 predCanvas.style.border = 'none';
 predCanvas.width = parseFloat(window.getComputedStyle(predCanvas).getPropertyValue('width'));
 predCanvas.height = parseFloat(window.getComputedStyle(predCanvas).getPropertyValue('height'));
@@ -47,8 +47,9 @@ function drawSequence() {
     if (!activePrediction) return window.requestAnimationFrame(drawSequence);
 
     predCtx.clearRect(0, 0, predCanvas.width, predCanvas.height);
+    let fontSize = 16;
 
-    let scale = predCanvas.height / poseCanvas.height;
+    let scale = (predCanvas.height - fontSize) / poseCanvas.height;
 
     let widthPerFrame = poseCanvas.width * scale;
     let framesPerWidth = Math.floor(predCanvas.width / widthPerFrame);
@@ -60,7 +61,7 @@ function drawSequence() {
     
     predCtx.fillStyle = 'rgba(0, 0, 0, 0.2)';
     predCtx.filter = 'blur(50px)';
-    predCtx.fillRect(0, 0, predCanvas.width, predCanvas.height);
+    predCtx.fillRect(0, 0, predCanvas.width, predCanvas.height - fontSize);
 
     predCtx.filter = 'none';
     predCtx.translate(excessWidth, 0);
@@ -75,7 +76,7 @@ function drawSequence() {
 
         predCtx.lineWidth = 2;
         predCtx.globalAlpha = 0.2;
-        drawGrid(predCtx, 0, widthPerFrame, 0, predCanvas.height);
+        drawGrid(predCtx, 0, widthPerFrame, 0, predCanvas.height - fontSize);
         predCtx.globalAlpha = 1;
 
         var keypoints = Array.from(activePrediction[f]);
@@ -86,6 +87,16 @@ function drawSequence() {
         }
 
         drawPose(predCtx, keypoints, isFuture, 1/3);
+        
+        let bottomPadding = 4;
+        predCtx.font = `${fontSize - bottomPadding}px sans-serif`;
+        predCtx.fillStyle = 'white';
+        let text = `t = ${f - IN_N + 1} (${isFuture ? 'predicted' : 'observed'})`;
+        let measure = predCtx.measureText(text);
+        predCtx.clearRect(0, predCanvas.height - fontSize, widthPerFrame, fontSize);
+        console.log(measure.width, text);
+        predCtx.fillText(text, (widthPerFrame - measure.width) / 2, predCanvas.height - bottomPadding);
+
     }
     predCtx.restore();
 
