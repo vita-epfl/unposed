@@ -151,11 +151,11 @@ class DePOSit(nn.Module):
                 noisy_obs = observed_data
                 noisy_cond_history = []
                 for t in range(self.num_steps):
-                    noise = torch.randn_like(noisy_obs.cpu())
+                    noise = torch.randn_like(noisy_obs.cpu()).to(self.device)
                     noisy_obs = (self.alpha_hat[t] ** 0.5) * noisy_obs + self.beta[t] ** 0.5 * noise
                     noisy_cond_history.append(noisy_obs * cond_mask)
 
-            current_sample = torch.randn_like(observed_data.cpu())
+            current_sample = torch.randn_like(observed_data.cpu()).to(self.device)
 
             for t in range(self.num_steps - 1, -1, -1):
                 if self.is_unconditional:
@@ -172,7 +172,7 @@ class DePOSit(nn.Module):
                 current_sample = coeff1 * (current_sample - coeff2 * predicted)
 
                 if t > 0:
-                    noise = torch.randn_like(current_sample.cpu())
+                    noise = torch.randn_like(current_sample.cpu()).to(self.device)
                     sigma = (
                                     (1.0 - self.alpha[t - 1]) / (1.0 - self.alpha[t]) * self.beta[t]
                             ) ** 0.5
