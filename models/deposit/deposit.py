@@ -127,7 +127,6 @@ class DePOSit(nn.Module):
         residual = (noise - predicted) * target_mask
         num_eval = target_mask.sum()
         loss = (residual ** 2).sum() / (num_eval if num_eval > 0 else 1)
-        # return loss
         return loss.mean()
 
     def set_input_to_diffmodel(self, noisy_data, observed_data, cond_mask):
@@ -158,13 +157,7 @@ class DePOSit(nn.Module):
             current_sample = torch.randn_like(observed_data.cpu()).to(self.device)
 
             for t in range(self.num_steps - 1, -1, -1):
-                if self.is_unconditional:
-                    diff_input = cond_mask * noisy_cond_history[t] + (1.0 - cond_mask) * current_sample
-                    diff_input = diff_input.unsqueeze(1)  # (B,1,K,L)
-                else:
-                    cond_obs = (cond_mask * observed_data).unsqueeze(1)
-                    noisy_target = ((1 - cond_mask) * current_sample).unsqueeze(1)
-                    diff_input = torch.cat([cond_obs, noisy_target], dim=1)  # (B,2,K,L)
+                diff_input = self.set_input_to_diffmodel(current_sample, observed_data, cond_mask)
                 predicted = self.diffmodel(diff_input, side_info, torch.tensor([t]).to(self.device))
 
                 coeff1 = 1 / self.alpha_hat[t] ** 0.5
@@ -187,11 +180,7 @@ class DePOSit(nn.Module):
 
         current_sample = torch.randn_like(observed_data.cpu()).to(self.device)  # Initial random sample
         for t in range(self.num_steps - 1, -1, -1):
-        
-            cond_obs = (cond_mask * observed_data).unsqueeze(1)
-            noisy_target = ((1 - cond_mask) * current_sample).unsqueeze(1)
-            diff_input = torch.cat([cond_obs, noisy_target], dim=1)
-
+            diff_input = self.set_input_to_diffmodel(current_sample, observed_data, cond_mask)
             predicted = self.diffmodel(diff_input, side_info, torch.tensor([t]).to(self.device))
             
             # Apply DDIM step here instead of DDPM's noise application
