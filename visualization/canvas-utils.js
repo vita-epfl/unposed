@@ -8,8 +8,7 @@ function drawPose(ctx, keypoints, isFuture, scale=1) {
         let [i, j] = segments[k];
         if (Math.min(keypoints[3*i+2], keypoints[3*j+2]) < LOW_CONFIDENCE_THRESHOLD) continue;
 
-        color = ['#3B75AF', '#B3C6E5', '#A8DD93', '#8D69B8', '#84584E', '#EF8636', '#F5BE82', '#C53A32', '#C2B1D2', '#BE9E96', '#519E3E', '#F19D99', 'red', 'red'][k];
-        if (isFuture) color = 'rgba(255, 255, 0, 0.8)';
+        color = isFuture ? 'rgba(255, 255, 0, 0.8)' : 'red';
         ctx.strokeStyle = color;
         ctx.lineWidth = 10 * scale;
         ctx.lineCap = 'round';
