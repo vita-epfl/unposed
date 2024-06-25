@@ -94,7 +94,6 @@ function drawSequence() {
         let text = `t = ${f - IN_N + 1} (${isFuture ? 'predicted' : 'observed'})`;
         let measure = predCtx.measureText(text);
         predCtx.clearRect(0, predCanvas.height - fontSize, widthPerFrame, fontSize);
-        console.log(measure.width, text);
         predCtx.fillText(text, (widthPerFrame - measure.width) / 2, predCanvas.height - bottomPadding);
 
     }

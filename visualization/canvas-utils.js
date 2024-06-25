@@ -35,32 +35,40 @@ function drawPose(ctx, keypoints, isFuture, scale=1) {
 }
 
 function drawArrow(ctx, startX, startY, dx, dy, r) {
-    // draw circle
+    const angle = Math.atan2(dy, dx);
+    const length = Math.sqrt(Math.pow(Math.cos(angle) * Math.abs(dx), 2) + Math.pow(Math.sin(angle) * Math.abs(dy), 2));
+    const headLength = 5;
+    const lineLength = length - headLength;
+
+    // Circle
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(startX, startY, r + 5, 0, 2 * Math.PI);
-    poseCtx.globalAlpha = 0.5;
+    ctx.arc(startX, startY, r, 0, 2 * Math.PI);
     ctx.fillStyle = 'black';
     ctx.fill();
-    poseCtx.globalAlpha = 1;
     ctx.stroke();
 
+    ctx.save();
+    ctx.translate(startX, startY);
+    ctx.rotate(angle);
+
+    // Line
     ctx.beginPath();
-    ctx.moveTo(startX, startY); // Start at the given coordinates
-    ctx.lineTo(startX + dx, startY + dy); // Draw line to the end point based on dx and dy
+    ctx.moveTo(0, 0);
+    ctx.lineTo(lineLength, 0);
     ctx.stroke();
 
-    // draw arrowhead
+    // Arrow head
     ctx.beginPath();
-    const headlen = 10;
-    const angle = Math.atan2(dy, dx);
-    ctx.moveTo(startX + dx, startY + dy);
-    ctx.lineTo(startX + dx - headlen * Math.cos(angle - Math.PI / 6), startY + dy - headlen * Math.sin(angle - Math.PI / 6));
-    ctx.lineTo(startX + dx - headlen * Math.cos(angle + Math.PI / 6), startY + dy - headlen * Math.sin(angle + Math.PI / 6));
-    ctx.lineTo(startX + dx, startY + dy);
+    ctx.moveTo(lineLength + headLength, 0);
+    ctx.lineTo(lineLength, -headLength);
+    ctx.lineTo(lineLength, headLength);
+    ctx.lineTo(lineLength + headLength, 0);
     ctx.fillStyle = 'white';
     ctx.fill();
+
+    ctx.restore();
 }
 
 function drawGrid(ctx, xMin, xMax, yMin, yMax) {
