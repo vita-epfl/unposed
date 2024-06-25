@@ -191,6 +191,8 @@ def F1(pred, target, dim):
     return de
 
 def F3(pred, target, dim):
+    if pred.shape[1] < 3:
+        return torch.tensor(torch.nan).to(pred.device)
     keypoints_num = int(pred.shape[-1] / dim)
     pred = torch.reshape(pred, pred.shape[:-1] + (keypoints_num, dim))
     target = torch.reshape(target, target.shape[:-1] + (keypoints_num, dim))
@@ -201,6 +203,8 @@ def F3(pred, target, dim):
     return de
 
 def F7(pred, target, dim):
+    if pred.shape[1] < 7:
+        return torch.tensor(torch.nan).to(pred.device)
     keypoints_num = int(pred.shape[-1] / dim)
     pred = torch.reshape(pred, pred.shape[:-1] + (keypoints_num, dim))
     target = torch.reshape(target, target.shape[:-1] + (keypoints_num, dim))
@@ -211,6 +215,8 @@ def F7(pred, target, dim):
     return de
 
 def F9(pred, target, dim):
+    if pred.shape[1] < 9:
+        return torch.tensor(torch.nan).to(pred.device)
     keypoints_num = int(pred.shape[-1] / dim)
     pred = torch.reshape(pred, pred.shape[:-1] + (keypoints_num, dim))
     target = torch.reshape(target, target.shape[:-1] + (keypoints_num, dim))
@@ -221,6 +227,8 @@ def F9(pred, target, dim):
     return de
 
 def F13(pred, target, dim):
+    if pred.shape[1] < 13:
+        return torch.tensor(torch.nan).to(pred.device)
     keypoints_num = int(pred.shape[-1] / dim)
     pred = torch.reshape(pred, pred.shape[:-1] + (keypoints_num, dim))
     target = torch.reshape(target, target.shape[:-1] + (keypoints_num, dim))
@@ -231,6 +239,8 @@ def F13(pred, target, dim):
     return de
 
 def F17(pred, target, dim):
+    if pred.shape[1] < 17:
+        return torch.tensor(torch.nan).to(pred.device)
     keypoints_num = int(pred.shape[-1] / dim)
     pred = torch.reshape(pred, pred.shape[:-1] + (keypoints_num, dim))
     target = torch.reshape(target, target.shape[:-1] + (keypoints_num, dim))
@@ -241,6 +251,8 @@ def F17(pred, target, dim):
     return de
 
 def F21(pred, target, dim):
+    if pred.shape[1] < 21:
+        return torch.tensor(torch.nan).to(pred.device)
     keypoints_num = int(pred.shape[-1] / dim)
     pred = torch.reshape(pred, pred.shape[:-1] + (keypoints_num, dim))
     target = torch.reshape(target, target.shape[:-1] + (keypoints_num, dim))
