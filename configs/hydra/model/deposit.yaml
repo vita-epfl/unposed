@@ -7,12 +7,8 @@ type: deposit
 device: ${device}
 target_dim: 96
 
-n_major_joints: 22 # 18 for AMASS and 3DPW and 22 for human3.6m
-
-# can be human3.6m , AMASS, 3DPW, none
-pre_post_process: human3.6m
-
 config:
+  target_dim: 96
   diffusion:
     layers: 4
     channels: 64

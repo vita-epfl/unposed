@@ -7,6 +7,7 @@ from path_definition import HYDRA_PATH
 from preprocessor.dpw_preprocessor import Preprocessor3DPW
 from preprocessor.human36m_preprocessor import Human36mPreprocessor
 from preprocessor.amass_preprocessor import AmassPreprocessor
+from preprocessor.human36m2d_preprocessor import Human36m2dPreprocessor
 from data_loader import DATASETS, DATA_TYPES
 
 logger = logging.getLogger(__name__)
@@ -30,6 +31,11 @@ def preprocess(cfg: DictConfig):
         )
     elif cfg.dataset == 'amass':
         preprocessor = AmassPreprocessor(
+            dataset_path=cfg.annotated_data_path,
+            custom_name=cfg.output_name, 
+        )
+    elif cfg.dataset == 'human3.6m2d':
+        preprocessor = Human36m2dPreprocessor(
             dataset_path=cfg.annotated_data_path,
             custom_name=cfg.output_name, 
         )

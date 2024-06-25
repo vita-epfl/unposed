@@ -2,7 +2,7 @@ from torch.utils.data import DataLoader
 
 from .pose_dataset import PoseDataset
 
-DATASETS = ['3dpw', 'human3.6m', 'amass']
+DATASETS = ['3dpw', 'human3.6m', 'amass', 'human3.6m2d']
 DATA_TYPES = ['train', 'validation', 'test']
 VISUALIZING_TYPES = ['observed', 'future', 'predicted', 'completed']
 
