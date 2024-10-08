@@ -1,5 +1,11 @@
+<div align="center">
+
 # Toward Reliable Human Pose Forecasting with Uncertainty  
-UnPOSed is an open-source toolbox for prediction/forecasting a sequence of human pose given an observed pose sequence, implemented in PyTorch. For more details, please refer to our [paper](https://arxiv.org/abs/2304.06707), published in <i> IEEE Robotics and Automation Letters, 2024</i>.
+UnPOSed is an open-source toolbox for prediction/forecasting a sequence of human pose given an observed pose sequence, implemented in PyTorch. 
+<h4><i> IEEE Robotics and Automation Letters, 2024</i></h4>
+ 
+[[paper](https://arxiv.org/abs/2304.06707)] [[livedemo](http://vitademo.epfl.ch/prediction/)]
+
 
 
 <p float="left">
@@ -7,6 +13,8 @@ UnPOSed is an open-source toolbox for prediction/forecasting a sequence of human
 
   Output pose and ground-truth<br/><img src="https://user-images.githubusercontent.com/33596552/138102754-5bef72df-ea48-4d17-a932-611293f0bc5a.gif" alt="prediction" width="500">  
 </p>
+
+</div>
 
 # Overview 
 
@@ -30,6 +38,7 @@ unposed
 |   ├── pv_lstm.py
 │   ├── disentangled.py
 |   ├── derpof.py
+|   ├── deposit/deposit.py
 |   ├── ...
 ├── losses
 |   ├── pua_loss.py
@@ -117,6 +126,7 @@ We've tested the following models:
 - [PV-LSTM](https://github.com/vita-epfl/bounding-box-prediction)
 - [Disentangled](https://github.com/Armin-Saadat/pose-prediction-autoencoder)
 - [DER-POF](https://openaccess.thecvf.com/content/ICCV2021W/SoMoF/html/Parsaeifard_Learning_Decoupled_Representations_for_Human_Pose_Forecasting_ICCVW_2021_paper.html)
+- [DePOSit](https://arxiv.org/abs/2210.05669)
 - Zero-Vel
 
 ## Adding a Model
