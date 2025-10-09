@@ -87,11 +87,11 @@ class AmassPreprocessor:
                         video_data['fps']
                     ])
                         
-                with jsonlines.open(os.path.join(self.output_dir, output_file_name), 'a') as writer:
-                    for data_row in data:
-                        writer.write({
-                            'video_section': data_row[0],
-                            'xyz_pose': data_row[1],
-                            'xyz_const_pose': data_row[2],
-                            'fps': data_row[3]
-                        })
+                    with jsonlines.open(os.path.join(self.output_dir, output_file_name), 'a') as writer:
+                        for data_row in data:
+                            writer.write({
+                                'video_section': data_row[0],
+                                'xyz_pose': data_row[1],
+                                'xyz_const_pose': data_row[2],
+                                'fps': data_row[3]
+                            })
